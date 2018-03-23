@@ -517,7 +517,7 @@ endif()
         dialogs/KisAsyncAnimationRenderDialogBase.cpp
         dialogs/KisAsyncAnimationCacheRenderDialog.cpp
         dialogs/KisAsyncAnimationFramesSaveDialog.cpp
-        canvas/KisCanvasAnimationState.cpp	
+        canvas/KisCanvasAnimationState.cpp
         kis_animation_importer.cpp
         KisFrameDataSerializer.cpp
         KisFrameCacheStore.cpp
@@ -711,11 +711,6 @@ if (ANDROID)
     target_link_libraries(kritaui PRIVATE Qt5::AndroidExtras)
 endif()
 
-if (NOT WIN32 AND NOT APPLE AND NOT ANDROID)
-  target_link_libraries(kritaui PRIVATE ${X11_X11_LIB}
-                                ${X11_Xinput_LIB})
-endif()
-
 if(APPLE)
     target_link_libraries(kritaui
         PUBLIC
@@ -729,15 +724,6 @@ endif ()
 
 if(OpenEXR_FOUND)
   target_link_libraries(kritaui PUBLIC ${LINK_OPENEXR_LIB})
-endif()
-
-# Add VSync disable workaround
-if(NOT WIN32 AND NOT APPLE AND NOT ANDROID)
-    target_link_libraries(kritaui PRIVATE ${CMAKE_DL_LIBS} Qt5::X11Extras)
-endif()
-
-if(X11_FOUND)
-    target_link_libraries(kritaui PRIVATE Qt5::X11Extras ${X11_LIBRARIES})
 endif()
 
 target_include_directories(kritaui
