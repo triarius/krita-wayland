@@ -26,8 +26,8 @@ KisWdgOptionsWebP::KisWdgOptionsWebP(QWidget *parent)
     }
 
 #if WEBP_ENCODER_ABI_VERSION < 0x020f
-    qMin->setEnabled(false);
-    qMax->setEnabled(false);
+    // qMin->setEnabled(false);
+    // qMax->setEnabled(false);
 #endif
 
     preset->addItem(i18nc("WebP presets", "Default"), WEBP_PRESET_DEFAULT);
@@ -97,8 +97,8 @@ void KisWdgOptionsWebP::setConfiguration(const KisPropertiesConfigurationSP cfg)
     exact->setChecked(cfg->getBool("exact", false));
     useSharpYUV->setChecked(cfg->getBool("use_sharp_yuv", false));
 #if WEBP_ENCODER_ABI_VERSION >= 0x020f
-    qMin->setValue(cfg->getInt("qmin", 0));
-    qMax->setValue(cfg->getInt("qmax", 100));
+    // qMin->setValue(cfg->getInt("qmin", 0));
+    // qMax->setValue(cfg->getInt("qmax", 100));
 #endif
 
     exif->setChecked(cfg->getBool("exif", true));
@@ -152,8 +152,8 @@ void KisWdgOptionsWebP::changePreset()
     exact->setChecked(preset.exact == 1);
     useSharpYUV->setChecked(preset.use_sharp_yuv);
 #if WEBP_ENCODER_ABI_VERSION >= 0x020f
-    qMin->setValue(preset.qmin);
-    qMax->setValue(preset.qmax);
+    // qMin->setValue(preset.qmin);
+    // qMax->setValue(preset.qmax);
 #endif
 }
 
@@ -194,8 +194,8 @@ KisPropertiesConfigurationSP KisWdgOptionsWebP::configuration() const
     cfg->setProperty("exact", exact->isChecked());
     cfg->setProperty("use_sharp_yuv", useSharpYUV->isChecked());
 #if WEBP_ENCODER_ABI_VERSION >= 0x020f
-    cfg->setProperty("qmin", qMin->value());
-    cfg->setProperty("qmax", qMax->value());
+    // cfg->setProperty("qmin", qMin->value());
+    // cfg->setProperty("qmax", qMax->value());
 #endif
 
     cfg->setProperty("exif", exif->isChecked());
